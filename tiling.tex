@@ -1,0 +1,286 @@
+\documentclass{beamer} 
+\mode<presentation> 
+\usetheme{Madrid} 
+\usecolortheme{seahorse} 
+
+\usepackage{mathrsfs}
+\usepackage{svg} 
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{url}
+
+\title{Tiling and the Extension Theorem} 
+\author{John Bush} 
+\institute{University of Washington, Bothell} 
+\date{Spring Quarter, 2017} 
+
+\begin{document} 
+
+\begin{frame} 
+\titlepage 
+\end{frame} 
+
+\begin{frame} 
+
+\begin{description} 
+    \item[Plane Tiling] A countable family of closed sets that covers the plane without gaps or overlaps. 
+    \item[Cover] Family of sets, the union of which covers the plane with no gaps. 
+    \item[Packing] Family of sets without overlap. 
+\end{description} 
+\begin{block}{} 
+    \begin{columns} 
+    \column{0.2\textwidth} 
+        \begin{figure} 
+        \center
+        \includesvg[width=\textwidth]{Penrose1} 
+        \caption{Plane tiling\footnotemark} 
+        \end{figure}
+    \column{0.2\textwidth} 
+        \begin{figure} 
+        \center
+        \includesvg[width=\textwidth]{Packing} 
+        \caption{Packing\footnotemark} 
+        \end{figure} 
+    \column{0.2\textwidth} 
+        \begin{figure}
+            \center
+            \includesvg[width=\textwidth]{cover} 
+            \caption{Cover} 
+        \end{figure} 
+    \end{columns} 
+\end{block}
+    \footnotetext[1]{Source: \url{https://commons.wikimedia.org/wiki/File:Penrose_Tiling_(P1_over_P3).svg}} 
+    \footnotetext[2]{Source: \url{https://commons.wikimedia.org/wiki/File:Circles_packed_in_square_15.svg}} 
+
+
+\end{frame} 
+
+\begin{frame} 
+
+\begin{description} 
+    \item[Tiling] Family of sets $\mathscr{T} = \{ T_1, T_2, \dots \}$ such that the union of \emph{tiles} $T_i$ is the whole plane, and the interiors of tiles $T_i$ are disjoint. 
+    \item[Patch] Finite number of tiles in the tiling, the union of which is a closed topological disc. 
+\end{description} 
+
+\end{frame} 
+
+\begin{frame} 
+
+\begin{description} 
+    \item[Congruent] Tiles or tilings are \emph{congruent} if they can be made to coincide by rigid motion of the plane. 
+    \item[Congruence Transformation] Mapping of the plane onto itself with preserves all distances. 
+        \begin{itemize} 
+            \item Rotation 
+            \item Translation 
+            \item Reflection 
+            \item Glide reflection 
+        \end{itemize} 
+\end{description} 
+
+\end{frame} 
+
+\begin{frame} 
+
+\begin{description} 
+    \item[Edge] Boundary of a tile, or an arc on the boundary of a tile.
+    \item[Vertex] Isolated point on the boundary of a tile.
+\end{description} 
+
+\end{frame} 
+
+\begin{frame} 
+
+\begin{description} 
+    \item[Prototile] A closed set congruent to a tile.
+\end{description} 
+
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Well-Behaved Tilings} 
+    \begin{description} 
+        \item[N1] Every tile of $\mathscr{T}$ is a closed topological disk.
+    \end{description} 
+    \begin{figure} 
+        \center 
+        \includesvg[height=0.6\textheight]{notdisc} 
+    \end{figure} 
+\end{frame} 
+
+\begin{frame} 
+    \begin{columns}
+    \column{0.4\textwidth}
+    \begin{description} 
+        \item[N2] The intersection of every two tiles of $\mathscr{T}$ is a connected set, and does not consist of disjoint parts.
+    \end{description} 
+    \column{0.6\textwidth} 
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{Voderberg.png} 
+        \caption{Voderberg Spiral\footnotemark} 
+    \end{figure}
+    \end{columns}
+    \footnotetext{Source: https://commons.wikimedia.org/wiki/File:Voderberg-1.png}
+\end{frame} 
+
+\begin{frame} 
+    \begin{description} 
+        \item[N3] The tiles of $\mathscr{T}$ are uniformly bounded.
+        \item[inparamater] Every tile in $\mathscr{T}$ may contain a circular disc of radius $u$.
+        \item[outparameter] Every tile in $\mathscr{T}$ may be contained in a circular disc of radius $U$.
+    \end{description} 
+    \begin{figure} 
+        \center 
+        \includesvg[height=0.5\textheight]{GoldenSpiralLogarithmic}
+        \caption{Golden Spiral\footnote{Source: https://commons.wikimedia.org/wiki/File:GoldenSpiralLogarithmic.svg}}
+    \end{figure} 
+\end{frame} 
+
+\begin{frame} 
+    \begin{description}
+         \item[inparamater] Every tile in $\mathscr{T}$ may contain a circular disc of radius $u$.
+        \item[outparameter] Every tile in $\mathscr{T}$ may be contained in a circular disc of radius $U$.
+    \end{description} 
+    \begin{figure} 
+        \center 
+        \includesvg[height=0.5\textwidth]{uniformbound} 
+    \end{figure} 
+\end{frame}
+
+
+\begin{frame} 
+    \frametitle{Hausdorff Distance}
+    \begin{equation} 
+        \delta (T_1, T_2) = \max \left\{ \adjustlimits\sup_{x_2 \in T_2} \inf_{x_1 \in T_1} \left| x_1 - x_2 \right| , \adjustlimits\sup_{x_1 \in T_1} \inf_{x_2 \in T_2} \left| x_1 - x_2 \right| \right\}
+    \end{equation} 
+    \begin{figure} 
+    \center
+    \includesvg[height = 0.75\textheight]{hausdorff}
+    \end{figure}
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Convergence}
+    A sequence of tiles $(T_n)$ will \emph{converge} to limit tile $T$ where $\delta (T_n , T) \rightarrow 0$ as $n \rightarrow \infty$.
+    \begin{figure}
+        \center
+        \includesvg[height=0.75\textheight]{convergence}
+    \end{figure} 
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Selection Theorem}
+    \begin{block}{Selection Theorem} 
+    If all tiles $T_i$ are congruent to a bounded tile $T_0$, and there is some point $P_0$ common to all tiles $T_i$, it is possible to select a convergent subsequence from $(T_i)$ that converges to a limit tile $T'$ that is also congruent to $T_0$.
+    \end{block}
+\end{frame}
+
+\begin{frame} 
+    \frametitle{Extension Theorem} 
+    \begin{block}{Extentension Theorem} 
+    Let $\mathscr{U}$ be a finite set of prototiles, each of which is a closed topological disc.  If $\mathscr{U}$ tiles over arbitrarily large circular discs $D$, then $\mathscr{U}$ admits a tiling of the plane.
+    \end{block} 
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Heesch's Problem} 
+    \begin{block}{Heesch's Problem} 
+        For which positive integers $r$ does there exist a prototile $T$ such that $T$ can be surrounded $r$ times, but not $r + 1$ times, by tiles congruent to $T$? 
+    \end{block}
+    \begin{figure} 
+        \center
+        \includesvg[height=0.65\textheight]{heeshpent} 
+        \caption{Pentagon, $r = 1$} 
+    \end{figure} 
+\end{frame} 
+
+\begin{frame} 
+    \begin{description} 
+        \item[Surround] Given a set of prototiles $\mathscr{T}$ that admit a patch $\mathscr{A}_0$, $\mathscr{A}_0$ can be \emph{surrounded} to form patch $\mathscr{A}_1$ if the closure of the plane not covered by $\mathscr{A}_1$ is disjoint from $\mathscr{A}_0$.
+    \end{description} 
+    \begin{figure} 
+    \center 
+    \includesvg[height=0.65\textheight]{Heesch5} 
+    \caption{Tiling of Heesch number 5\footnotemark} 
+    \end{figure}
+    \footnotetext{Source: \url{https://commons.wikimedia.org/wiki/File:Heesch-5.svg}}
+\end{frame}
+
+\begin{frame} 
+    \begin{block}{Conjecture}
+    Does there exist a function $f(n, m)$ such that for all prototile sets $\mathscr{P}$ of $n$ prototiles, if every patch of $m$ tiles can be surrounded $f(n, m)$ times, then $\mathscr{P}$ admits a tiling of the plane.
+    \end{block} 
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Polyminoes} 
+    \begin{columns} 
+        \column{0.3\textwidth} 
+            \begin{figure} 
+                \center 
+                \includesvg[width=\textwidth]{Trominoes} 
+                \caption{Trominoes\footnotemark} 
+            \end{figure}
+         \column{0.3\textwidth} 
+            \begin{figure} 
+                \center 
+                \includesvg[width=\textwidth]{Tetrominoes} 
+                \caption{Tetrominoes\footnotemark} 
+            \end{figure}
+       \column{0.3\textwidth} 
+            \begin{figure} 
+                \center 
+                \includesvg[width=\textwidth]{Octominoes} 
+                \caption{Octominoes\footnotemark} 
+            \end{figure}
+        \end{columns} 
+\footnotetext[1]{Source: \url{https://commons.wikimedia.org/wiki/File:Trominoes.svg}}
+\footnotetext[2]{Source: \url{https://en.wikipedia.org/wiki/Tetromino}}
+\footnotetext[3]{Source: \url{https://commons.wikimedia.org/wiki/File:The_369_Free_Octominoes.svg}}
+\end{frame} 
+
+\begin{frame} 
+    \begin{figure} 
+        \center
+        \includesvg[height=0.25\textheight]{Tetracomb} 
+        \caption{Tetrahex\footnotemark} 
+    \end{figure} 
+    \begin{figure} 
+        \center 
+        \includesvg[height=0.3\textwidth]{Tetracubes} 
+        \caption{Tetracubes\footnotemark} 
+    \end{figure} 
+
+    \footnotetext[1]{Source: \url{https://commons.wikimedia.org/wiki/File:Tetracomb.svg}} 
+    \footnotetext[2]{Source: \url{https://commons.wikimedia.org/wiki/File:Tetracubes.svg}}
+\end{frame} 
+
+\begin{frame} 
+    \frametitle{Penrose Tiles} 
+    \begin{columns}
+    \column{0.5\textwidth}
+    \begin{figure} 
+        \center 
+        \includesvg[height=0.5\textheight]{Penroserhombs} 
+        \caption{Penrose P3\footnotemark} 
+    \end{figure} 
+    \column{0.5\textwidth} 
+        \begin{figure} 
+            \center 
+            \includesvg[height=0.5\textheight]{PenroseP3} 
+            \caption{Penrose P3 Tiling\footnotemark} 
+        \end{figure} 
+    \end{columns}
+    
+    
+
+\footnotetext[1]{Source: \url{https://commons.wikimedia.org/wiki/File:Kite_Dart.svg}}
+\footnotetext[2]{Source: \url{https://commons.wikimedia.org/wiki/File:Penrose_Tiling_(Rhombi).svg}} 
+\end{frame}
+
+    
+
+
+\end{document}
